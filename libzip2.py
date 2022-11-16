@@ -101,13 +101,10 @@ _FH_GENERAL_PURPOSE_FLAG_BITS = 3
 _FH_FILENAME_LENGTH = 10
 _FH_EXTRA_FIELD_LENGTH = 11
 
-# The "Zip64 end of central directory locator" structure, magic number, and size
 structEndArchive64Locator = "<4sLQL"
 stringEndArchive64Locator = b"PK\x06\x07"
 sizeEndCentDir64Locator = struct.calcsize(structEndArchive64Locator)
 
-# The "Zip64 end of central directory" record, magic number, size, and indices
-# (section V.G in the format document)
 structEndArchive64 = "<4sQ2H2L4Q"
 stringEndArchive64 = b"PK\x06\x06"
 sizeEndCentDir64 = struct.calcsize(structEndArchive64)
@@ -2023,5 +2020,5 @@ class ZipFile:
         self._fileRefCnt -= 1
 
         if not self._fileRefCnt and not self._filePassed:
-            
+
             fp.close()
